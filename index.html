@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Red Polo 120 · Paradise Ranch</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Polo vacations, polo school, culinary experiences and farm stays with Enrique Diaz at Paradise Ranch, Mar Chiquita, Buenos Aires, Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,300;1,400&family=Oswald:wght@300;400;500&display=swap">
+<style>
+/* Layout: full-bleed photo hero, then alternating 50/50 brown-block / photo bands, ornamental two-level titles, a single "120" speed moment in red. */
+:root{
+  --brown:#534741;      /* main dark block */
+  --brown-deep:#3a312c; /* footer, overlays */
+  --sand:#E5D9C6;       /* light ground */
+  --sand-soft:#f3ece2;  /* cards, alt bands */
+  --leather:#B89366;    /* rules, ornaments, labels */
+  --red:#a1312a;        /* "Red" accent: 120, active states */
+  --ink:#2b2420;        /* text on sand */
+  --cream:#fbf7f1;      /* text on brown */
+  --wa:#25D366;
+  --f-display:"Lora", Georgia, "Times New Roman", serif;
+  --f-label:"Oswald", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --f-body:"Lora", Georgia, "Times New Roman", serif;
+  --wrap:1140px;
+  --gut-l:max(16px, env(safe-area-inset-left, 0px));
+  --gut-r:max(16px, env(safe-area-inset-right, 0px));
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--sand);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--leather);outline-offset:3px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+
+/* ---------- type ---------- */
+.eyebrow{font-family:var(--f-label);font-weight:300;text-transform:uppercase;letter-spacing:.22em;font-size:clamp(18px,2.2vw,28px);line-height:1.1;margin:0}
+.display{font-family:var(--f-display);font-style:italic;font-weight:300;font-size:clamp(48px,7.4vw,96px);line-height:1;margin:.08em 0 0;text-wrap:balance}
+.display.md{font-size:clamp(42px,5.6vw,72px)}
+.label{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.2em;font-size:13px;font-weight:400}
+p{margin:0 0 1em;max-width:62ch}
+h3{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:30px;line-height:1.15;margin:0}
+
+/* ornament */
+.orn{display:block;width:min(420px,100%);height:22px;color:currentColor;margin:22px 0}
+.center .orn{margin-left:auto;margin-right:auto}
+
+/* text button between ornaments, like the reference */
+.cta{display:inline-flex;align-items:center;gap:.7em;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.24em;font-size:17px;text-decoration:none;padding:.55em 0;position:relative;transition:color .3s}
+.cta::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.cta:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.18em;font-size:15px;text-decoration:none;padding:15px 26px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--cream);color:var(--brown);border-color:var(--cream)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#fff}
+.btn.wa:hover{background:#1ebe5a;border-color:#1ebe5a;color:#fff}
+.btn svg{width:20px;height:20px}
+
+/* ---------- photos with graceful fallback ---------- */
+.ph{position:relative;overflow:hidden;background:var(--brown)}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.ph.sky{background:linear-gradient(180deg,#d9a96b 0%,#c97b4a 34%,#7d4b3a 58%,#4b3d33 59%,#3a3b2b 100%)}
+.ph.field{background:linear-gradient(180deg,#b9c3c4 0%,#e4d6bb 46%,#8b8a5a 47%,#5f6a3e 100%)}
+.ph.lagoon{background:linear-gradient(180deg,#e9c99b 0%,#c9a982 40%,#6e8a92 41%,#41606b 100%)}
+.ph.leather{background:radial-gradient(120% 90% at 30% 20%,#c8a273 0%,#8a6747 55%,#4c3a2e 100%)}
+
+/* ---------- header ---------- */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--brown-deep)}
+.top{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;color:var(--cream);transition:background .4s,box-shadow .4s,padding .4s;padding-block:22px}
+.top.solid{background:rgba(58,49,44,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 1px 0 rgba(184,147,102,.35);padding-block:10px}
+.top .wrap{display:flex;align-items:center;gap:28px;max-width:1320px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.logo-mark{width:46px;height:46px;flex:none}
+.logo-txt{display:flex;flex-direction:column;line-height:1}
+.logo-txt b{font-family:var(--f-label);font-weight:400;letter-spacing:.28em;font-size:17px}
+.logo-txt b em{font-style:normal;color:var(--leather)}
+.logo-txt small{font-family:var(--f-display);font-style:italic;font-size:13px;opacity:.85;margin-top:5px;letter-spacing:.02em}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{font-family:var(--f-label);text-transform:uppercase;font-weight:400;letter-spacing:.08em;font-size:15px;text-decoration:none;position:relative;padding:4px 0}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:1px;background:var(--leather);transform:scaleX(0);transition:transform .35s var(--ease)}
+.nav a:hover::after,.nav a.on::after{transform:scaleX(1)}
+.tools{display:flex;align-items:center;gap:14px}
+.langs{display:flex;gap:6px}
+.langs button{all:unset;cursor:pointer;display:flex;align-items:center;gap:5px;font-family:var(--f-label);font-size:12px;letter-spacing:.12em;padding:4px 6px;opacity:.6;transition:opacity .25s;border-bottom:1px solid transparent}
+.langs button:hover{opacity:1}
+.langs button[aria-pressed="true"]{opacity:1;border-bottom-color:var(--leather)}
+.langs svg{width:20px;height:14px;border-radius:1px;box-shadow:0 0 0 1px rgba(255,255,255,.25)}
+.social{display:flex;gap:8px}
+.social a{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--leather);color:var(--brown-deep);transition:background .3s,transform .3s}
+.social a:hover{background:var(--cream);transform:translateY(-2px)}
+.social svg{width:16px;height:16px}
+.burger{all:unset;display:none;cursor:pointer;width:34px;height:34px;position:relative;flex:none}
+.burger span,.burger::before,.burger::after{content:"";position:absolute;left:5px;right:5px;height:1.5px;background:currentColor;transition:transform .35s,opacity .35s}
+.burger::before{top:10px}.burger span{top:16.5px}.burger::after{top:23px}
+.menu-open .burger::before{transform:translateY(6.5px) rotate(45deg)}
+.menu-open .burger span{opacity:0}
+.menu-open .burger::after{transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:min(100svh,920px);display:grid;place-items:center;color:var(--cream);text-align:center;overflow:hidden;background:var(--brown-deep)}
+.hero-slides{position:absolute;inset:0}
+.hero-slides .ph{position:absolute;inset:0;opacity:0;transition:opacity 1.6s ease}
+.hero-slides .ph.on{opacity:1}
+.hero-slides .ph img{transform:scale(1.12);transition:transform 9s linear}
+.hero-slides .ph.on img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,24,20,.62) 0%,rgba(30,24,20,.22) 38%,rgba(30,24,20,.35) 70%,rgba(30,24,20,.75) 100%)}
+.hero-in{position:relative;z-index:2;padding-block:150px 120px;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+.hero .kicker{font-family:var(--f-label);letter-spacing:.42em;font-size:13px;text-transform:uppercase;color:var(--sand);opacity:.85;margin-bottom:26px}
+.hero .display{font-size:clamp(64px,11vw,150px)}
+.hero .sub{margin:4px auto 0;max-width:46ch;font-style:italic;font-size:clamp(17px,1.6vw,20px);opacity:.92}
+.hero .orn{width:min(470px,86vw)}
+.hero-dots{position:absolute;z-index:3;bottom:36px;left:50%;transform:translateX(-50%);display:flex;gap:10px}
+.hero-dots button{all:unset;cursor:pointer;width:28px;height:2px;background:rgba(251,247,241,.35);position:relative;overflow:hidden}
+.hero-dots button.on::after{content:"";position:absolute;inset:0;background:var(--cream);animation:fill 6.5s linear forwards}
+@keyframes fill{from{transform:translateX(-100%)}to{transform:none}}
+.scroll-cue{position:absolute;z-index:3;left:calc(var(--gut-l) + 10px);bottom:32px;font-family:var(--f-label);font-size:11px;letter-spacing:.3em;writing-mode:vertical-rl;text-transform:uppercase;color:var(--cream);opacity:.75;text-decoration:none;display:flex;align-items:center;gap:12px}
+.scroll-cue::after{content:"";width:1px;height:54px;background:linear-gradient(var(--cream),transparent);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* load sequence */
+.hero-in > *{animation:rise 1.1s var(--ease) both}
+.hero-in > :nth-child(1){animation-delay:.15s}
+.hero-in > :nth-child(2){animation-delay:.35s}
+.hero-in > :nth-child(3){animation-delay:.5s}
+.hero-in > :nth-child(4){animation-delay:.7s}
+.hero-in > :nth-child(5){animation-delay:.85s}
+.hero-in > :nth-child(6){animation-delay:1s}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+.hero .orn path.draw{stroke-dasharray:240;stroke-dashoffset:240;animation:draw 1.6s .9s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* ---------- marquee ---------- */
+.marquee{background:var(--leather);color:var(--brown-deep);overflow:hidden;padding-block:14px;border-block:1px solid rgba(58,49,44,.25)}
+.marquee-track{display:flex;width:max-content;animation:slide 38s linear infinite}
+.marquee span{font-family:var(--f-label);text-transform:uppercase;letter-spacing:.3em;font-size:15px;white-space:nowrap;display:flex;align-items:center}
+.marquee span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);margin:0 28px}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* ---------- split bands ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;min-height:620px;background:var(--brown);color:var(--cream)}
+.split.rev .split-txt{order:2}
+.split-txt{display:flex;align-items:center;padding-block:96px;padding-left:max(var(--gut-l),calc((100vw - var(--wrap))/2 + 16px));padding-right:clamp(24px,5vw,80px)}
+.split.rev .split-txt{padding-left:clamp(24px,5vw,80px);padding-right:max(var(--gut-r),calc((100vw - var(--wrap))/2 + 16px))}
+.split-txt > div{max-width:520px;min-width:0}
+.split .ph{min-height:420px}
+.split .ph img{position:absolute;inset:0}
+.split ul{list-style:none;padding:0;margin:0 0 6px;display:grid;gap:10px}
+.split li{display:flex;gap:14px;align-items:baseline}
+.split li::before{content:"";flex:none;width:8px;height:8px;transform:rotate(45deg) translateY(-2px);background:var(--leather)}
+.split .label{color:var(--leather)}
+.stripe{display:grid;grid-template-columns:1fr 1fr;height:14px}
+.stripe i:first-child{background:var(--sand)}
+.stripe i:last-child{background:var(--leather)}
+
+/* ---------- experiences ---------- */
+.sec{padding-block:110px}
+.sec-head{text-align:center;margin-bottom:56px;color:var(--brown)}
+.sec-head .orn{color:var(--leather)}
+.sec-head p{margin:0 auto;font-size:18px}
+.xp{display:grid;grid-template-columns:repeat(6,1fr);gap:22px}
+.card{grid-column:span 2;position:relative;min-height:440px;color:var(--cream);text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
+.card:nth-child(4),.card:nth-child(5){grid-column:span 3;min-height:380px}
+.card .ph{position:absolute;inset:0;z-index:-2}
+.card .ph img{position:absolute;inset:0}
+.card::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(30,24,20,0) 30%,rgba(30,24,20,.86) 100%);transition:background .5s}
+.card:hover .ph img{transform:scale(1.07)}
+.card:hover::before{background:linear-gradient(180deg,rgba(83,71,65,.25) 0%,rgba(58,49,44,.92) 100%)}
+.card-in{padding:30px 28px}
+.card .label{color:var(--leather);display:block;margin-bottom:8px}
+.card h3{font-size:clamp(28px,2.6vw,36px)}
+.card p{margin:12px 0 0;font-size:15.5px;line-height:1.6;opacity:.9;max-height:0;overflow:hidden;transition:max-height .6s var(--ease),opacity .5s}
+.card:hover p,.card:focus-visible p{max-height:220px}
+.card .more{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-family:var(--f-label);font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--sand)}
+.card .more svg{width:16px;height:16px;transition:transform .35s}
+.card:hover .more svg{transform:translateX(6px)}
+
+/* ---------- 120 ---------- */
+.speed{position:relative;color:var(--cream);overflow:hidden;background:var(--brown-deep)}
+.speed .ph{position:absolute;inset:-10% 0;z-index:0}
+.speed .ph img{position:absolute;inset:0;opacity:.32;filter:grayscale(.3) sepia(.2)}
+.speed-in{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:48px;padding-block:120px}
+.big120{font-family:var(--f-display);font-style:italic;font-weight:300;font-size:clamp(150px,24vw,330px);line-height:.8;color:var(--red);letter-spacing:-.04em;font-variant-numeric:tabular-nums;position:relative;margin:0}
+.big120 small{position:absolute;right:0;bottom:-8px;font-family:var(--f-label);font-style:normal;font-size:13px;letter-spacing:.3em;color:var(--leather)}
+.gauge{height:3px;background:rgba(251,247,241,.18);margin-top:28px;position:relative;overflow:hidden;max-width:520px}
+.gauge i{position:absolute;inset:0;background:linear-gradient(90deg,var(--leather),var(--red));transform-origin:left;transform:scaleX(var(--g,1))}
+.speed blockquote{margin:0 0 18px;font-family:var(--f-display);font-style:italic;font-size:clamp(24px,2.6vw,34px);line-height:1.3}
+.speed .label{color:var(--leather)}
+
+/* ---------- story timeline ---------- */
+.story{background:var(--sand-soft)}
+.tl{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;position:relative;counter-reset:none}
+.tl::before{content:"";position:absolute;left:0;right:0;top:260px;height:1px;background:var(--leather);opacity:.6}
+.tl-item{display:flex;flex-direction:column;gap:18px;min-width:0}
+.tl-item .ph{height:220px}
+.tl-item .ph img{position:absolute;inset:0}
+.tl-item:hover .ph img{transform:scale(1.05)}
+.tl-dot{width:15px;height:15px;border:1px solid var(--leather);background:var(--sand-soft);transform:rotate(45deg);margin:15px 0 4px 2px;position:relative}
+.tl-dot::after{content:"";position:absolute;inset:3px;background:var(--red)}
+.tl-item .label{color:var(--red)}
+.tl-item h3{color:var(--brown)}
+.tl-item p{font-size:16px;margin:0}
+
+/* ---------- gallery ---------- */
+.gal-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 26px;margin:-18px 0 40px}
+.gal-tabs button{all:unset;cursor:pointer;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.18em;font-size:14px;color:var(--brown);padding:6px 2px;border-bottom:1px solid transparent;opacity:.65;transition:opacity .25s,border-color .25s}
+.gal-tabs button:hover{opacity:1}
+.gal-tabs button[aria-pressed="true"]{opacity:1;border-bottom-color:var(--red)}
+.gal{columns:4 230px;column-gap:12px}
+.gal button{all:unset;cursor:zoom-in;display:block;margin-bottom:12px;break-inside:avoid;width:100%;animation:pop .6s var(--ease) both}
+.gal .ph{width:100%}
+.gal .ph img{height:auto}
+.gal .ph.tall{aspect-ratio:3/4}.gal .ph.wide{aspect-ratio:4/3}.gal .ph.sq{aspect-ratio:1}
+.gal .ph.tall img,.gal .ph.wide img,.gal .ph.sq img{height:100%;position:absolute;inset:0}
+.gal button:hover img{transform:scale(1.06)}
+@keyframes pop{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(28,22,19,.94);display:grid;place-items:center;padding:max(24px,env(safe-area-inset-top,0px)) var(--gut-r) 24px var(--gut-l)}
+.lb .ph{max-width:min(1100px,100%);width:100%;aspect-ratio:3/2;background:var(--brown-deep)}
+.lb .ph img{object-fit:contain;position:absolute;inset:0}
+.lb button{all:unset;cursor:pointer;position:absolute;color:var(--cream);font-family:var(--f-label);letter-spacing:.2em;font-size:13px;text-transform:uppercase;padding:12px}
+.lb .x{top:calc(14px + env(safe-area-inset-top,0px));right:calc(10px + env(safe-area-inset-right,0px))}
+.lb .pv{left:calc(6px + env(safe-area-inset-left,0px));top:50%;font-size:34px}
+.lb .nx{right:calc(6px + env(safe-area-inset-right,0px));top:50%;font-size:34px}
+
+/* ---------- contact ---------- */
+.contact{position:relative;color:var(--cream);background:var(--brown)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:64px;padding-block:110px;align-items:start}
+.contact .label{color:var(--leather)}
+.ways{display:grid;gap:16px;margin-top:26px}
+.way{display:flex;align-items:center;gap:16px;text-decoration:none;padding:16px 18px;border:1px solid rgba(184,147,102,.4);transition:border-color .3s,background .3s}
+.way:hover{border-color:var(--leather);background:rgba(184,147,102,.08)}
+.way .ic{width:44px;height:44px;flex:none;display:grid;place-items:center;border-radius:50%;background:var(--leather);color:var(--brown-deep)}
+.way .ic.g{background:var(--wa);color:#fff}
+.way .ic svg{width:22px;height:22px}
+.way b{display:block;font-family:var(--f-label);font-weight:400;letter-spacing:.14em;text-transform:uppercase;font-size:14px}
+.way span{font-size:16px;user-select:all}
+form{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:var(--sand-soft);color:var(--ink);padding:36px}
+form .full{grid-column:1/-1}
+form label{display:grid;gap:6px;font-family:var(--f-label);text-transform:uppercase;letter-spacing:.14em;font-size:12px;color:var(--brown)}
+form input,form select,form textarea{font:inherit;font-family:var(--f-body);font-size:16px;letter-spacing:0;text-transform:none;color:var(--ink);background:transparent;border:0;border-bottom:1px solid rgba(83,71,65,.45);padding:8px 2px;border-radius:0;transition:border-color .3s}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-bottom-color:var(--red)}
+form textarea{resize:vertical;min-height:90px}
+form h3{color:var(--brown);margin-bottom:4px}
+form .note{font-size:13.5px;color:var(--brown);margin:0;font-style:italic}
+.map-link{margin-top:22px}
+
+/* ---------- footer ---------- */
+footer{background:var(--brown-deep);color:var(--sand);padding-block:56px 40px;text-align:center}
+footer .logo{justify-content:center;margin-bottom:18px}
+footer small{display:block;font-family:var(--f-label);letter-spacing:.18em;font-size:11.5px;text-transform:uppercase;opacity:.6;margin-top:18px}
+
+/* ---------- WhatsApp float ---------- */
+.wa-float{position:fixed;z-index:70;right:calc(22px + env(safe-area-inset-right,0px));bottom:calc(22px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;background:var(--wa);color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28);text-decoration:none;transition:transform .3s var(--ease)}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:32px;height:32px}
+.wa-float::before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--wa);z-index:-1;animation:ping 2.6s ease-out infinite}
+@keyframes ping{0%{transform:scale(1);opacity:.55}80%,100%{transform:scale(1.7);opacity:0}}
+.wa-tip{position:absolute;right:72px;top:50%;transform:translateY(-50%) translateX(8px);white-space:nowrap;background:var(--cream);color:var(--brown);font-family:var(--f-label);letter-spacing:.1em;font-size:13px;text-transform:uppercase;padding:8px 14px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+.wa-float:hover .wa-tip{opacity:1;transform:translateY(-50%)}
+
+/* ---------- scroll reveal (only armed by JS, content is visible without it) ---------- */
+.js .rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease)}
+.js .rv.in{opacity:1;transform:none}
+.js .rv.d1{transition-delay:.12s}.js .rv.d2{transition-delay:.24s}.js .rv.d3{transition-delay:.36s}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .nav{gap:18px}.nav a{font-size:14px}
+  .social{display:none}
+}
+@media (max-width:920px){
+  .burger{display:block}
+  .nav{position:fixed;inset:0;z-index:-1;background:var(--brown-deep);flex-direction:column;justify-content:center;align-items:center;gap:22px;transform:translateY(-100%);transition:transform .55s var(--ease)}
+  .nav a{font-size:24px;letter-spacing:.14em}
+  .menu-open .nav{transform:none}
+  .tools{margin-left:auto}
+  .split{grid-template-columns:1fr;min-height:0}
+  .split.rev .split-txt{order:0}
+  .split-txt,.split.rev .split-txt{padding:72px var(--gut-r) 72px var(--gut-l)}
+  .split .ph{min-height:340px}
+  .xp{grid-template-columns:1fr 1fr}
+  .card,.card:nth-child(4),.card:nth-child(5){grid-column:span 1;min-height:380px}
+  .card:nth-child(5){grid-column:1/-1}
+  .card p{max-height:none}
+  .speed-in{grid-template-columns:1fr;gap:20px;padding-block:90px}
+  .tl{grid-template-columns:1fr;gap:44px}
+  .tl::before{display:none}
+  .contact-grid{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .top{padding-block:14px}
+  .logo-txt small{display:none}
+  .langs button span{display:none}
+  .langs{gap:2px}.tools{gap:6px}.top .wrap{gap:12px}.logo-txt b{font-size:15px;letter-spacing:.2em}.hero .kicker{letter-spacing:.28em;font-size:11px}
+  .xp{grid-template-columns:1fr}
+  .card:nth-child(5){grid-column:auto}
+  form{grid-template-columns:1fr;padding:26px 20px}
+  .sec{padding-block:80px}
+  .scroll-cue{display:none}
+  .hero-in{padding-block:130px 100px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .js .rv{opacity:1;transform:none}
+  .hero .orn path.draw{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<!-- reusable icons -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.2-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4a10.4 10.4 0 0 1-1.7-5.7C5.1 9.9 10 5.2 16 5.2S26.9 9.9 26.9 15.8 22 26.4 16 26.4zm6-7.8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6.3-.5c.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5 2.9 1.1 3.4.9 4 .8.6-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" d="M7 2.8h10A4.2 4.2 0 0 1 21.2 7v10a4.2 4.2 0 0 1-4.2 4.2H7A4.2 4.2 0 0 1 2.8 17V7A4.2 4.2 0 0 1 7 2.8z"/><circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.6A2.6 2.6 0 1 1 12 6.4a2.6 2.6 0 0 1 0 5.2z"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 12h17M14 6l6 6-6 6"/></symbol>
+  <!-- ornament: rule, diamonds, crossed mallets and ball -->
+  <symbol id="orn" viewBox="0 0 420 22">
+    <path class="draw" d="M0 11H160M260 11H420" fill="none" stroke="currentColor" stroke-width="1"/>
+    <path d="M150 11l6-4 6 4-6 4zM258 11l6-4 6 4-6 4z" fill="currentColor"/>
+    <circle cx="172" cy="11" r="1.6" fill="currentColor"/><circle cx="248" cy="11" r="1.6" fill="currentColor"/>
+    <path d="M191 3l38 16M229 3l-38 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+    <path d="M186.5 1.2l7 3-1.2 2.6-7-3zM233.5 1.2l-7 3 1.2 2.6 7-3z" fill="currentColor"/>
+    <circle cx="210" cy="16.5" r="3.2" fill="none" stroke="currentColor" stroke-width="1.2"/>
+  </symbol>
+  <symbol id="f-us" viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><path d="M0 0h20v1.08H0zm0 2.15h20v1.08H0zm0 2.16h20v1.07H0zm0 2.15h20v1.08H0zm0 2.15h20v1.08H0zm0 2.16h20v1.07H0zm0 2.15h20V14H0z" fill="#b22234"/><rect width="8.5" height="7.5" fill="#3c3b6e"/></symbol>
+  <symbol id="f-ar" viewBox="0 0 20 14"><rect width="20" height="14" fill="#74acdf"/><rect y="4.67" width="20" height="4.67" fill="#fff"/><circle cx="10" cy="7" r="1.5" fill="#f6b40e"/></symbol>
+  <symbol id="f-fr" viewBox="0 0 20 14"><rect width="20" height="14" fill="#fff"/><rect width="6.67" height="14" fill="#0055a4"/><rect x="13.33" width="6.67" height="14" fill="#ef4135"/></symbol>
+  <!-- logo mark: ball in a ring with 120 -->
+  <symbol id="mark" viewBox="0 0 48 48"><circle cx="24" cy="24" r="22.5" fill="none" stroke="currentColor" stroke-width="1"/><circle cx="24" cy="24" r="18.5" fill="none" stroke="#B89366" stroke-width=".8" stroke-dasharray="1.5 2.2"/><text x="24" y="29.5" text-anchor="middle" font-family="Lora, Georgia, serif" font-style="italic" font-size="16" fill="currentColor">120</text><circle cx="38.6" cy="12.4" r="3.2" fill="#a1312a"/></symbol>
+</svg>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Red Polo 120">
+      <svg class="logo-mark"><use href="#mark"/></svg>
+      <span class="logo-txt"><b>RED <em>POLO</em> 120</b><small>Paradise Ranch · Mar Chiquita</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#rancho" data-i18n="nav.ranch">The Ranch</a>
+      <a href="#experiencias" data-i18n="nav.xp">Experiences</a>
+      <a href="#enrique" data-i18n="nav.enrique">Enrique</a>
+      <a href="#mar-chiquita" data-i18n="nav.mc">Mar Chiquita</a>
+      <a href="#galeria" data-i18n="nav.gallery">Gallery</a>
+      <a href="#contacto" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <div class="tools">
+      <div class="langs" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true"><svg><use href="#f-us"/></svg><span>EN</span></button>
+        <button type="button" data-lang="es" aria-pressed="false"><svg><use href="#f-ar"/></svg><span>ES</span></button>
+        <button type="button" data-lang="fr" aria-pressed="false"><svg><use href="#f-fr"/></svg><span>FR</span></button>
+      </div>
+      <div class="social">
+        <a href="https://instagram.com/redpolo120" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+        <a class="wa-link" href="https://wa.me/19498749399" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+      </div>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-slides" id="slides">
+    <div class="ph sky on"><img alt="" data-src="1651931475083-CMAY9RPAELX0HKB501IZ/2DB217CB-4DF9-469C-AD1F-074E895A1C68.jpeg" data-w="2500"></div>
+    <div class="ph field"><img alt="" data-src="1651806366073-IHWZYQBJIMBCDQGPCFBN/C0662D4A-119E-411D-8080-BA918B4B4F2D.jpeg" data-w="2500"></div>
+    <div class="ph sky"><img alt="" data-src="0ab5a704-269b-41d0-a96d-a8a555af71f1/IMG_7988.jpg" data-w="2500"></div>
+  </div>
+  <div class="hero-in">
+    <div class="kicker">Paradise Ranch · Mar Chiquita · Argentina</div>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Live the magic of</p>
+    <h1 class="display">Polo</h1>
+    <svg class="orn"><use href="#orn"/></svg>
+    <p class="sub" data-i18n="hero.sub">Ride, play and learn with a master of the sport, on a ranch by the sea in the Argentine pampas.</p>
+    <a class="cta" href="#contacto" data-i18n="hero.cta">Plan your stay</a>
+  </div>
+  <div class="hero-dots" id="dots"></div>
+  <a class="scroll-cue" href="#rancho" data-i18n="hero.scroll">Discover</a>
+</section>
+
+<div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+<!-- WELCOME split -->
+<section class="split" id="rancho">
+  <div class="split-txt"><div>
+    <p class="eyebrow rv" data-i18n="ranch.eyebrow">Welcome to</p>
+    <h2 class="display md rv d1">Paradise Ranch</h2>
+    <svg class="orn rv d2"><use href="#orn"/></svg>
+    <p class="rv d2" data-i18n="ranch.p1">Our polo ranch sits a few steps from the sea, in Mar Chiquita, province of Buenos Aires. Open fields, our own horses, a full-size polo field and sunsets that need no filter.</p>
+    <ul class="rv d3">
+      <li data-i18n="ranch.l1">Polo field and stables on site</li>
+      <li data-i18n="ranch.l2">Horses trained by Enrique himself</li>
+      <li data-i18n="ranch.l3">Ranch house with rooms for guests</li>
+      <li data-i18n="ranch.l4">Asado and country cooking every day</li>
+    </ul>
+    <svg class="orn rv d3"><use href="#orn"/></svg>
+    <a class="cta rv d3" href="#experiencias" data-i18n="ranch.cta">See experiences</a>
+  </div></div>
+  <div class="ph field"><img alt="Paradise Ranch, Mar Chiquita" data-src="7302ffa3-7b71-43e6-bb1c-e3a58e23ad50/IMG_7992.jpg" data-w="1500"></div>
+</section>
+<div class="stripe" aria-hidden="true"><i></i><i></i></div>
+
+<!-- EXPERIENCES -->
+<section class="sec" id="experiencias">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow rv" data-i18n="xp.eyebrow">Our</p>
+      <h2 class="display md rv d1" data-i18n="xp.title">Experiences</h2>
+      <svg class="orn rv d2"><use href="#orn"/></svg>
+      <p class="rv d2" data-i18n="xp.intro">Everything happens inside the ranch: polo, food and rest. Tell us what you are looking for and we put together your days.</p>
+    </div>
+    <div class="xp">
+      <a class="card rv" href="#contacto" data-interest="polo">
+        <div class="ph field"><img alt="" data-src="1651803533702-KS6E0T16QND868UL4D00/5F3F6813-865F-4D5C-B7DA-F63FA4CAD5D6.jpeg" data-w="1000"></div>
+        <div class="card-in"><span class="label" data-i18n="xp.1.k">Polo vacations</span><h3 data-i18n="xp.1.t">Polo Retreat</h3>
+        <p data-i18n="xp.1.d">Days on the field with Enrique as host and instructor: chukkers, practice and horses matched to your level.</p>
+        <span class="more"><span data-i18n="xp.more">Inquire</span><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card rv d1" href="#contacto" data-interest="school">
+        <div class="ph leather"><img alt="" data-src="1652105219358-6T05U4W2F7HZ07WVVANC/7F0D3460-23E1-42CC-9896-6BF825465925.jpeg" data-w="1000"></div>
+        <div class="card-in"><span class="label" data-i18n="xp.2.k">Learn to play</span><h3 data-i18n="xp.2.t">Red Polo 120 School</h3>
+        <p data-i18n="xp.2.d">From your first time on a horse to your first match. Riding, swing, rules and strategy, at your own pace.</p>
+        <span class="more"><span data-i18n="xp.more">Inquire</span><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card rv d2" href="#contacto" data-interest="food">
+        <div class="ph leather"><img alt="" data-src="1652106529398-8Z8RMZ6T4N8GC6US0XLH/BBDACD2C-D096-4D06-BCF6-5AE0DD7337E3.jpeg" data-w="1000"></div>
+        <div class="card-in"><span class="label" data-i18n="xp.3.k">Culinary journeys</span><h3 data-i18n="xp.3.t">Asado &amp; country table</h3>
+        <p data-i18n="xp.3.d">Argentine asado over the fire, local produce and long tables after the game.</p>
+        <span class="more"><span data-i18n="xp.more">Inquire</span><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card rv" href="#contacto" data-interest="stay">
+        <div class="ph sky"><img alt="" data-src="4390dbac-8a62-4eb5-ae98-bbe06ca2d005/IMG_D9E4B494C5C1-1.jpeg" data-w="1400"></div>
+        <div class="card-in"><span class="label" data-i18n="xp.4.k">Farm stays</span><h3 data-i18n="xp.4.t">Bed &amp; Breakfast at the ranch</h3>
+        <p data-i18n="xp.4.d">Wake up to the horses and the sea breeze. Rooms in the ranch house, breakfast included.</p>
+        <span class="more"><span data-i18n="xp.more">Inquire</span><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="card rv d1" href="#contacto" data-interest="events">
+        <div class="ph field"><img alt="" data-src="1651841581034-BF96603LT54F09G9U9WK/880798FE-D1A2-4161-A753-B88CDADE9331.jpeg" data-w="1400"></div>
+        <div class="card-in"><span class="label" data-i18n="xp.5.k">Tournaments &amp; events</span><h3 data-i18n="xp.5.t">Polo days and celebrations</h3>
+        <p data-i18n="xp.5.d">Tournaments, polo and asado days, groups and private celebrations on the field.</p>
+        <span class="more"><span data-i18n="xp.more">Inquire</span><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY 120 -->
+<section class="speed" id="why120">
+  <div class="ph leather" data-parallax><img alt="" data-src="1651094651907-T63XSIPXJ6BYME8WFQ27/5335FF0F-6308-4C97-A2E3-5516A1C9A143.jpeg" data-w="2000"></div>
+  <div class="wrap speed-in">
+    <div>
+      <p class="big120" id="n120">120<small>KM/H</small></p>
+      <div class="gauge"><i id="gauge"></i></div>
+    </div>
+    <div>
+      <p class="label" data-i18n="why.k">Why 120?</p>
+      <blockquote data-i18n="why.q">120 is flat out. Top speed, the maximum extension of a polo pony.</blockquote>
+      <p data-i18n="why.p">It is the moment when horse and rider become one. That is the feeling we want every guest to take home, whether it is your first ride or your hundredth chukker.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ENRIQUE split -->
+<section class="split rev" id="enrique">
+  <div class="ph leather"><img alt="Enrique Diaz" data-src="1651093969680-2JHM6RNKHZZSM03DTUAF/5EDB415A-CBAB-4561-BE9B-785EEBDB4919.jpeg" data-w="1500"></div>
+  <div class="split-txt"><div>
+    <p class="eyebrow rv" data-i18n="enr.eyebrow">Meet</p>
+    <h2 class="display md rv d1">R. Enrique Diaz</h2>
+    <svg class="orn rv d2"><use href="#orn"/></svg>
+    <p class="rv d2" data-i18n="enr.p1">With a passion for horses since the age of eleven, Enrique has travelled the world as a professional polo player, groom and trainer, from Hawaii to Santa Barbara.</p>
+    <p class="rv d3" data-i18n="enr.p2">He does it all: he trains the horses, teaches players of every level and built Paradise Ranch by hand. Now he shares it with guests from all over the world.</p>
+    <svg class="orn rv d3"><use href="#orn"/></svg>
+    <a class="cta rv d3" href="#historia" data-i18n="enr.cta">Our story</a>
+  </div></div>
+</section>
+<div class="stripe" aria-hidden="true"><i></i><i></i></div>
+
+<!-- STORY -->
+<section class="sec story" id="historia">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow rv" data-i18n="story.eyebrow">How we</p>
+      <h2 class="display md rv d1" data-i18n="story.title">Started</h2>
+      <svg class="orn rv d2"><use href="#orn"/></svg>
+    </div>
+    <div class="tl">
+      <article class="tl-item rv">
+        <div class="ph sky"><img alt="" data-src="1651971081571-BNJZKM3XX4ITO3OQ6O5O/0B31881B-C443-471D-8569-0F4FC76E4F1A.jpeg" data-w="900"></div>
+        <div class="tl-dot"></div>
+        <span class="label" data-i18n="story.1.k">The beginning</span>
+        <h3 data-i18n="story.1.t">A ranch by the sea</h3>
+        <p data-i18n="story.1.d">We found a piece of land next to the sea in Mar Chiquita and started building, fence by fence, the ranch we had always imagined.</p>
+      </article>
+      <article class="tl-item rv d1">
+        <div class="ph field"><img alt="" data-src="1676574259750-DAY2FD6QQAQ5OOIAGZFO/7d4c2373-475e-489b-8446-7dbdcb4cbc00.jpg" data-w="900"></div>
+        <div class="tl-dot"></div>
+        <span class="label" data-i18n="story.2.k">April 2022</span>
+        <h3 data-i18n="story.2.t">Grand opening</h3>
+        <p data-i18n="story.2.d">We opened Paradise Ranch with a polo tournament and an asado for friends and neighbours.</p>
+      </article>
+      <article class="tl-item rv d2">
+        <div class="ph leather"><img alt="" data-src="c906c456-0d27-4b95-9160-c231e6590465/IMG_3499.jpg" data-w="900"></div>
+        <div class="tl-dot"></div>
+        <span class="label" data-i18n="story.3.k">January 2023</span>
+        <h3 data-i18n="story.3.t">Palermo, a dream come true</h3>
+        <p data-i18n="story.3.d">Enrique travelled with his own horses to play in Palermo, the cathedral of polo in Buenos Aires.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MAR CHIQUITA split -->
+<section class="split" id="mar-chiquita">
+  <div class="split-txt"><div>
+    <p class="eyebrow rv" data-i18n="mc.eyebrow">Welcome to</p>
+    <h2 class="display md rv d1">Mar Chiquita</h2>
+    <svg class="orn rv d2"><use href="#orn"/></svg>
+    <p class="rv d2" data-i18n="mc.p1">A coastal lagoon where the pampas meet the Atlantic, a short drive from Mar del Plata. Quiet beaches, wide skies and one of the richest bird habitats in Argentina.</p>
+    <ul class="rv d3">
+      <li data-i18n="mc.l1">Birdwatching on the lagoon</li>
+      <li data-i18n="mc.l2">Fishing and kitesurfing</li>
+      <li data-i18n="mc.l3">Beaches and sunsets over the water</li>
+      <li data-i18n="mc.l4">Close to Mar del Plata</li>
+    </ul>
+    <a class="cta rv d3 map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Mar+Chiquita+Buenos+Aires+Argentina" target="_blank" rel="noopener"><svg width="18" height="18"><use href="#i-pin"/></svg><span data-i18n="mc.map">Open map</span></a>
+  </div></div>
+  <div class="ph lagoon"><img alt="Mar Chiquita lagoon" data-src="1d5c082b-1cc9-470e-b527-91874cfaaa5c/IMG_3784.jpg" data-w="1500"></div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec" id="galeria">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="eyebrow rv" data-i18n="gal.eyebrow">Our</p>
+      <h2 class="display md rv d1" data-i18n="gal.title">Gallery</h2>
+      <svg class="orn rv d2"><use href="#orn"/></svg>
+    </div>
+    <div class="gal-tabs" role="group" aria-label="Albums">
+      <button type="button" data-album="ranch" aria-pressed="true" data-i18n="gal.ranch">Our home</button>
+      <button type="button" data-album="opening" aria-pressed="false" data-i18n="gal.opening">Opening 2022</button>
+      <button type="button" data-album="palermo" aria-pressed="false" data-i18n="gal.palermo">Palermo 2023</button>
+      <button type="button" data-album="mc" aria-pressed="false">Mar Chiquita</button>
+    </div>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacto">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow rv" data-i18n="ct.eyebrow">Let's plan</p>
+      <h2 class="display md rv d1" data-i18n="ct.title">your stay</h2>
+      <svg class="orn rv d2" style="color:var(--leather)"><use href="#orn"/></svg>
+      <p class="rv d2" data-i18n="ct.p">Write to us on WhatsApp and tell us your dates, how many you are and what you would like to do. We answer in English, Spanish or French.</p>
+      <div class="ways rv d3">
+        <a class="way wa-link" href="https://wa.me/19498749399" target="_blank" rel="noopener">
+          <span class="ic g"><svg><use href="#i-wa"/></svg></span>
+          <span><b>WhatsApp</b><span>+1 (949) 874-9399</span></span>
+        </a>
+        <a class="way" href="https://instagram.com/redpolo120" target="_blank" rel="noopener">
+          <span class="ic"><svg><use href="#i-ig"/></svg></span>
+          <span><b>Instagram</b><span>@redpolo120</span></span>
+        </a>
+        <a class="way" href="https://www.google.com/maps/search/?api=1&amp;query=Mar+Chiquita+Buenos+Aires+Argentina" target="_blank" rel="noopener">
+          <span class="ic"><svg><use href="#i-pin"/></svg></span>
+          <span><b data-i18n="ct.where">Where</b><span>Mar Chiquita, Buenos Aires, Argentina</span></span>
+        </a>
+      </div>
+    </div>
+    <form id="form" class="rv d1" novalidate>
+      <div class="full"><h3 data-i18n="f.title">Send an inquiry</h3><p class="note" data-i18n="f.note">The message opens in WhatsApp, ready to send.</p></div>
+      <label for="f-name"><span data-i18n="f.name">Name</span><input id="f-name" name="name" autocomplete="name" required></label>
+      <label for="f-guests"><span data-i18n="f.guests">Guests</span><input id="f-guests" name="guests" type="number" min="1" value="2"></label>
+      <label for="f-dates" class="full"><span data-i18n="f.dates">Dates</span><input id="f-dates" name="dates" data-i18n-ph="f.dates.ph" placeholder="e.g. 10 to 17 March"></label>
+      <label for="f-int" class="full"><span data-i18n="f.int">I am interested in</span>
+        <select id="f-int" name="interest">
+          <option value="polo" data-i18n="xp.1.t">Polo Retreat</option>
+          <option value="school" data-i18n="xp.2.t">Red Polo 120 School</option>
+          <option value="food" data-i18n="xp.3.t">Asado &amp; country table</option>
+          <option value="stay" data-i18n="xp.4.t">Bed &amp; Breakfast at the ranch</option>
+          <option value="events" data-i18n="xp.5.t">Polo days and celebrations</option>
+        </select>
+      </label>
+      <label for="f-msg" class="full"><span data-i18n="f.msg">Message</span><textarea id="f-msg" name="msg" data-i18n-ph="f.msg.ph" placeholder="Your riding level, questions, anything we should know"></textarea></label>
+      <div class="full"><button class="btn wa" type="submit"><svg><use href="#i-wa"/></svg><span data-i18n="f.send">Send on WhatsApp</span></button></div>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Red Polo 120">
+      <svg class="logo-mark"><use href="#mark"/></svg>
+      <span class="logo-txt" style="text-align:left"><b>RED <em>POLO</em> 120</b><small>Paradise Ranch · Mar Chiquita</small></span>
+    </a>
+    <svg class="orn" style="color:var(--leather);margin-inline:auto"><use href="#orn"/></svg>
+    <small>© <span id="yr">2026</span> Red Polo 120 · Paradise Ranch · Mar Chiquita, Buenos Aires, Argentina</small>
+  </div>
+</footer>
+
+<a class="wa-float wa-link" href="https://wa.me/19498749399" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg><use href="#i-wa"/></svg><span class="wa-tip" data-i18n="wa.tip">Chat with us</span>
+</a>
+
+<div class="lb" id="lb" hidden>
+  <div class="ph leather"><img alt="" id="lb-img"></div>
+  <button class="x" type="button" id="lb-x" data-i18n="lb.close">Close ✕</button>
+  <button class="pv" type="button" id="lb-p" aria-label="Previous">‹</button>
+  <button class="nx" type="button" id="lb-n" aria-label="Next">›</button>
+</div>
+
+<script>
+(function(){
+  var CDN = "https://images.squarespace-cdn.com/content/v1/626965345de33e122323fea6/";
+  var WA = "19498749399";
+
+  /* ---------- translations ---------- */
+  var T = {
+    en:{
+      "nav.ranch":"The Ranch","nav.xp":"Experiences","nav.enrique":"Enrique","nav.mc":"Mar Chiquita","nav.gallery":"Gallery","nav.contact":"Contact",
+      "hero.eyebrow":"Live the magic of","hero.sub":"Ride, play and learn with a master of the sport, on a ranch by the sea in the Argentine pampas.","hero.cta":"Plan your stay","hero.scroll":"Discover",
+      marquee:["Polo","Asado","Horses","Polo school","Lagoon","Sunsets","Farm stays","Mar Chiquita"],
+      "ranch.eyebrow":"Welcome to","ranch.p1":"Our polo ranch sits a few steps from the sea, in Mar Chiquita, province of Buenos Aires. Open fields, our own horses, a full-size polo field and sunsets that need no filter.",
+      "ranch.l1":"Polo field and stables on site","ranch.l2":"Horses trained by Enrique himself","ranch.l3":"Ranch house with rooms for guests","ranch.l4":"Asado and country cooking every day","ranch.cta":"See experiences",
+      "xp.eyebrow":"Our","xp.title":"Experiences","xp.intro":"Everything happens inside the ranch: polo, food and rest. Tell us what you are looking for and we put together your days.","xp.more":"Inquire",
+      "xp.1.k":"Polo vacations","xp.1.t":"Polo Retreat","xp.1.d":"Days on the field with Enrique as host and instructor: chukkers, practice and horses matched to your level.",
+      "xp.2.k":"Learn to play","xp.2.t":"Red Polo 120 School","xp.2.d":"From your first time on a horse to your first match. Riding, swing, rules and strategy, at your own pace.",
+      "xp.3.k":"Culinary journeys","xp.3.t":"Asado & country table","xp.3.d":"Argentine asado over the fire, local produce and long tables after the game.",
+      "xp.4.k":"Farm stays","xp.4.t":"Bed & Breakfast at the ranch","xp.4.d":"Wake up to the horses and the sea breeze. Rooms in the ranch house, breakfast included.",
+      "xp.5.k":"Tournaments & events","xp.5.t":"Polo days and celebrations","xp.5.d":"Tournaments, polo and asado days, groups and private celebrations on the field.",
+      "why.k":"Why 120?","why.q":"120 is flat out. Top speed, the maximum extension of a polo pony.","why.p":"It is the moment when horse and rider become one. That is the feeling we want every guest to take home, whether it is your first ride or your hundredth chukker.",
+      "enr.eyebrow":"Meet","enr.p1":"With a passion for horses since the age of eleven, Enrique has travelled the world as a professional polo player, groom and trainer, from Hawaii to Santa Barbara.","enr.p2":"He does it all: he trains the horses, teaches players of every level and built Paradise Ranch by hand. Now he shares it with guests from all over the world.","enr.cta":"Our story",
+      "story.eyebrow":"How we","story.title":"Started",
+      "story.1.k":"The beginning","story.1.t":"A ranch by the sea","story.1.d":"We found a piece of land next to the sea in Mar Chiquita and started building, fence by fence, the ranch we had always imagined.",
+      "story.2.k":"April 2022","story.2.t":"Grand opening","story.2.d":"We opened Paradise Ranch with a polo tournament and an asado for friends and neighbours.",
+      "story.3.k":"January 2023","story.3.t":"Palermo, a dream come true","story.3.d":"Enrique travelled with his own horses to play in Palermo, the cathedral of polo in Buenos Aires.",
+      "mc.eyebrow":"Welcome to","mc.p1":"A coastal lagoon where the pampas meet the Atlantic, a short drive from Mar del Plata. Quiet beaches, wide skies and one of the richest bird habitats in Argentina.",
+      "mc.l1":"Birdwatching on the lagoon","mc.l2":"Fishing and kitesurfing","mc.l3":"Beaches and sunsets over the water","mc.l4":"Close to Mar del Plata","mc.map":"Open map",
+      "gal.eyebrow":"Our","gal.title":"Gallery","gal.ranch":"Our home","gal.opening":"Opening 2022","gal.palermo":"Palermo 2023",
+      "ct.eyebrow":"Let's plan","ct.title":"your stay","ct.p":"Write to us on WhatsApp and tell us your dates, how many you are and what you would like to do. We answer in English, Spanish or French.","ct.where":"Where",
+      "f.title":"Send an inquiry","f.note":"The message opens in WhatsApp, ready to send.","f.name":"Name","f.guests":"Guests","f.dates":"Dates","f.dates.ph":"e.g. 10 to 17 March","f.int":"I am interested in","f.msg":"Message","f.msg.ph":"Your riding level, questions, anything we should know","f.send":"Send on WhatsApp",
+      "wa.tip":"Chat with us","lb.close":"Close ✕",
+      "wa.hello":"Hi Red Polo 120! I would like information about your experiences.","wa.form":"Hi Red Polo 120! My name is {name}. We are {guests} guests, dates: {dates}. I am interested in: {int}. {msg}"
+    },
+    es:{
+      "nav.ranch":"El rancho","nav.xp":"Experiencias","nav.enrique":"Enrique","nav.mc":"Mar Chiquita","nav.gallery":"Galería","nav.contact":"Contacto",
+      "hero.eyebrow":"Viví la magia del","hero.sub":"Cabalgá, jugá y aprendé con un maestro del deporte, en un rancho frente al mar en la pampa argentina.","hero.cta":"Planificá tu estadía","hero.scroll":"Descubrir",
+      marquee:["Polo","Asado","Caballos","Escuela de polo","Laguna","Atardeceres","Estadías de campo","Mar Chiquita"],
+      "ranch.eyebrow":"Bienvenidos a","ranch.p1":"Nuestro rancho de polo está a pocos pasos del mar, en Mar Chiquita, provincia de Buenos Aires. Campo abierto, caballos propios, una cancha de polo reglamentaria y atardeceres que no necesitan filtro.",
+      "ranch.l1":"Cancha de polo y caballerizas en el lugar","ranch.l2":"Caballos entrenados por el propio Enrique","ranch.l3":"Casa del rancho con habitaciones para huéspedes","ranch.l4":"Asado y cocina de campo todos los días","ranch.cta":"Ver experiencias",
+      "xp.eyebrow":"Nuestras","xp.title":"Experiencias","xp.intro":"Todo sucede dentro del rancho: polo, comida y descanso. Contanos qué buscás y armamos tus días.","xp.more":"Consultar",
+      "xp.1.k":"Vacaciones de polo","xp.1.t":"Polo Retreat","xp.1.d":"Días de cancha con Enrique como anfitrión e instructor: chukkers, práctica y caballos según tu nivel.",
+      "xp.2.k":"Aprendé a jugar","xp.2.t":"Escuela Red Polo 120","xp.2.d":"Desde tu primera vez a caballo hasta tu primer partido. Monta, swing, reglas y estrategia, a tu ritmo.",
+      "xp.3.k":"Experiencias culinarias","xp.3.t":"Asado y mesa de campo","xp.3.d":"Asado argentino a la leña, productos de la zona y largas sobremesas después del partido.",
+      "xp.4.k":"Estadías de campo","xp.4.t":"Bed & Breakfast en el rancho","xp.4.d":"Despertate con los caballos y la brisa del mar. Habitaciones en la casa del rancho, desayuno incluido.",
+      "xp.5.k":"Torneos y eventos","xp.5.t":"Días de polo y celebraciones","xp.5.d":"Torneos, jornadas de polo y asado, grupos y celebraciones privadas en la cancha.",
+      "why.k":"¿Por qué 120?","why.q":"120 es ir a fondo. Velocidad máxima, la extensión total de un caballo de polo.","why.p":"Es el momento en que caballo y jinete son uno. Esa es la sensación que queremos que cada huésped se lleve, sea su primera cabalgata o su chukker número cien.",
+      "enr.eyebrow":"Conocé a","enr.p1":"Apasionado por los caballos desde los once años, Enrique recorrió el mundo como jugador profesional de polo, petisero y entrenador, de Hawái a Santa Bárbara.","enr.p2":"Hace de todo: entrena los caballos, enseña a jugadores de todos los niveles y construyó Paradise Ranch con sus propias manos. Hoy lo comparte con huéspedes de todo el mundo.","enr.cta":"Nuestra historia",
+      "story.eyebrow":"Cómo","story.title":"Empezamos",
+      "story.1.k":"Los comienzos","story.1.t":"Un rancho junto al mar","story.1.d":"Encontramos un campo junto al mar en Mar Chiquita y empezamos a construir, alambrado por alambrado, el rancho que siempre imaginamos.",
+      "story.2.k":"Abril 2022","story.2.t":"La inauguración","story.2.d":"Inauguramos Paradise Ranch con un torneo de polo y un asado para amigos y vecinos.",
+      "story.3.k":"Enero 2023","story.3.t":"Palermo, un sueño cumplido","story.3.d":"Enrique viajó con sus propios caballos a jugar en Palermo, la catedral del polo en Buenos Aires.",
+      "mc.eyebrow":"Bienvenidos a","mc.p1":"Una laguna costera donde la pampa se encuentra con el Atlántico, muy cerca de Mar del Plata. Playas tranquilas, cielos abiertos y uno de los ambientes de aves más ricos de la Argentina.",
+      "mc.l1":"Avistaje de aves en la laguna","mc.l2":"Pesca y kitesurf","mc.l3":"Playas y atardeceres sobre el agua","mc.l4":"Cerca de Mar del Plata","mc.map":"Ver mapa",
+      "gal.eyebrow":"Nuestra","gal.title":"Galería","gal.ranch":"Nuestro hogar","gal.opening":"Inauguración 2022","gal.palermo":"Palermo 2023",
+      "ct.eyebrow":"Planifiquemos","ct.title":"tu estadía","ct.p":"Escribinos por WhatsApp y contanos tus fechas, cuántos son y qué les gustaría hacer. Respondemos en inglés, español o francés.","ct.where":"Dónde",
+      "f.title":"Enviá tu consulta","f.note":"El mensaje se abre en WhatsApp, listo para enviar.","f.name":"Nombre","f.guests":"Huéspedes","f.dates":"Fechas","f.dates.ph":"ej. del 10 al 17 de marzo","f.int":"Me interesa","f.msg":"Mensaje","f.msg.ph":"Tu nivel de monta, preguntas, lo que debamos saber","f.send":"Enviar por WhatsApp",
+      "wa.tip":"Escribinos","lb.close":"Cerrar ✕",
+      "wa.hello":"¡Hola Red Polo 120! Quisiera información sobre sus experiencias.","wa.form":"¡Hola Red Polo 120! Mi nombre es {name}. Somos {guests} huéspedes, fechas: {dates}. Me interesa: {int}. {msg}"
+    },
+    fr:{
+      "nav.ranch":"Le ranch","nav.xp":"Expériences","nav.enrique":"Enrique","nav.mc":"Mar Chiquita","nav.gallery":"Galerie","nav.contact":"Contact",
+      "hero.eyebrow":"Vivez la magie du","hero.sub":"Montez, jouez et apprenez avec un maître du sport, dans un ranch face à la mer au cœur de la pampa argentine.","hero.cta":"Planifiez votre séjour","hero.scroll":"Découvrir",
+      marquee:["Polo","Asado","Chevaux","École de polo","Lagune","Couchers de soleil","Séjours à la ferme","Mar Chiquita"],
+      "ranch.eyebrow":"Bienvenue à","ranch.p1":"Notre ranch de polo se trouve à quelques pas de la mer, à Mar Chiquita, dans la province de Buenos Aires. Grands espaces, nos propres chevaux, un terrain de polo réglementaire et des couchers de soleil sans filtre.",
+      "ranch.l1":"Terrain de polo et écuries sur place","ranch.l2":"Chevaux dressés par Enrique lui-même","ranch.l3":"Maison du ranch avec chambres d'hôtes","ranch.l4":"Asado et cuisine de campagne chaque jour","ranch.cta":"Voir les expériences",
+      "xp.eyebrow":"Nos","xp.title":"Expériences","xp.intro":"Tout se passe au ranch : polo, gastronomie et repos. Dites-nous ce que vous cherchez et nous organisons vos journées.","xp.more":"Demander",
+      "xp.1.k":"Vacances polo","xp.1.t":"Polo Retreat","xp.1.d":"Des journées sur le terrain avec Enrique comme hôte et instructeur : chukkers, entraînement et chevaux adaptés à votre niveau.",
+      "xp.2.k":"Apprendre à jouer","xp.2.t":"École Red Polo 120","xp.2.d":"De votre première fois à cheval à votre premier match. Équitation, swing, règles et stratégie, à votre rythme.",
+      "xp.3.k":"Voyages culinaires","xp.3.t":"Asado et table de campagne","xp.3.d":"Asado argentin au feu de bois, produits locaux et longues tablées après le match.",
+      "xp.4.k":"Séjours à la ferme","xp.4.t":"Chambres d'hôtes au ranch","xp.4.d":"Réveillez-vous avec les chevaux et la brise marine. Chambres dans la maison du ranch, petit-déjeuner inclus.",
+      "xp.5.k":"Tournois et événements","xp.5.t":"Journées polo et célébrations","xp.5.d":"Tournois, journées polo et asado, groupes et célébrations privées sur le terrain.",
+      "why.k":"Pourquoi 120 ?","why.q":"120, c'est à fond. La vitesse maximale, l'extension totale d'un poney de polo.","why.p":"C'est l'instant où le cheval et le cavalier ne font plus qu'un. C'est ce sentiment que nous voulons offrir à chaque hôte, pour une première balade comme pour un centième chukker.",
+      "enr.eyebrow":"Découvrez","enr.p1":"Passionné de chevaux depuis l'âge de onze ans, Enrique a parcouru le monde comme joueur de polo professionnel, palefrenier et entraîneur, d'Hawaï à Santa Barbara.","enr.p2":"Il fait tout : il dresse les chevaux, enseigne aux joueurs de tous niveaux et a construit Paradise Ranch de ses mains. Aujourd'hui, il le partage avec des hôtes du monde entier.","enr.cta":"Notre histoire",
+      "story.eyebrow":"Nos","story.title":"Débuts",
+      "story.1.k":"Le commencement","story.1.t":"Un ranch au bord de la mer","story.1.d":"Nous avons trouvé un terrain au bord de la mer à Mar Chiquita et avons construit, clôture après clôture, le ranch dont nous rêvions.",
+      "story.2.k":"Avril 2022","story.2.t":"L'inauguration","story.2.d":"Nous avons inauguré Paradise Ranch avec un tournoi de polo et un asado pour nos amis et voisins.",
+      "story.3.k":"Janvier 2023","story.3.t":"Palermo, un rêve réalisé","story.3.d":"Enrique est allé jouer à Palermo avec ses propres chevaux, la cathédrale du polo à Buenos Aires.",
+      "mc.eyebrow":"Bienvenue à","mc.p1":"Une lagune côtière où la pampa rencontre l'Atlantique, tout près de Mar del Plata. Plages tranquilles, ciel immense et l'un des habitats d'oiseaux les plus riches d'Argentine.",
+      "mc.l1":"Observation des oiseaux sur la lagune","mc.l2":"Pêche et kitesurf","mc.l3":"Plages et couchers de soleil sur l'eau","mc.l4":"Près de Mar del Plata","mc.map":"Voir la carte",
+      "gal.eyebrow":"Notre","gal.title":"Galerie","gal.ranch":"Notre maison","gal.opening":"Inauguration 2022","gal.palermo":"Palermo 2023",
+      "ct.eyebrow":"Planifions","ct.title":"votre séjour","ct.p":"Écrivez-nous sur WhatsApp en indiquant vos dates, le nombre de personnes et ce que vous souhaitez faire. Nous répondons en anglais, espagnol ou français.","ct.where":"Où",
+      "f.title":"Envoyer une demande","f.note":"Le message s'ouvre dans WhatsApp, prêt à être envoyé.","f.name":"Nom","f.guests":"Personnes","f.dates":"Dates","f.dates.ph":"ex. du 10 au 17 mars","f.int":"Je suis intéressé par","f.msg":"Message","f.msg.ph":"Votre niveau d'équitation, vos questions, ce que nous devons savoir","f.send":"Envoyer sur WhatsApp",
+      "wa.tip":"Écrivez-nous","lb.close":"Fermer ✕",
+      "wa.hello":"Bonjour Red Polo 120 ! J'aimerais des informations sur vos expériences.","wa.form":"Bonjour Red Polo 120 ! Je m'appelle {name}. Nous sommes {guests} personnes, dates : {dates}. Je suis intéressé par : {int}. {msg}"
+    }
+  };
+
+  var doc = document.documentElement;
+  doc.classList.add("js");
+  var lang = "en";
+  function store(k,v){try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){return null}}
+
+  function setLang(l){
+    if(!T[l]) l="en"; lang=l; var d=T[l];
+    doc.lang=l;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){var v=d[el.getAttribute("data-i18n")]; if(v) el.textContent=v;});
+    document.querySelectorAll("[data-i18n-ph]").forEach(function(el){var v=d[el.getAttribute("data-i18n-ph")]; if(v) el.placeholder=v;});
+    document.querySelectorAll(".langs button").forEach(function(b){b.setAttribute("aria-pressed", b.dataset.lang===l?"true":"false");});
+    var m=d.marquee.concat(d.marquee), html="";
+    for(var i=0;i<2;i++) m.forEach(function(w){html+="<span>"+w+"</span>";});
+    document.getElementById("marquee").innerHTML=html;
+    var hello="https://wa.me/"+WA+"?text="+encodeURIComponent(d["wa.hello"]);
+    document.querySelectorAll(".wa-link").forEach(function(a){a.href=hello;});
+    store("rp-lang",l);
+  }
+  document.querySelectorAll(".langs button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.lang);});});
+  var saved=store("rp-lang"), nav=(navigator.language||"en").slice(0,2);
+  setLang(saved || (T[nav]?nav:"en"));
+
+  /* ---------- images: load from the current site's CDN, keep the toned fallback if they fail ---------- */
+  function load(img){
+    var src=img.getAttribute("data-src"); if(!src) return;
+    img.onerror=function(){img.style.display="none";};
+    img.src=CDN+src+"?format="+(img.getAttribute("data-w")||"1500")+"w";
+    img.loading = img.closest(".hero")?"eager":"lazy";
+    img.decoding="async";
+  }
+  document.querySelectorAll("img[data-src]").forEach(load);
+
+  /* ---------- header ---------- */
+  var top=document.getElementById("top");
+  function onScroll(){top.classList.toggle("solid", window.scrollY>40);}
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  var burger=document.getElementById("burger");
+  burger.addEventListener("click",function(){var o=document.body.classList.toggle("menu-open");burger.setAttribute("aria-expanded",o);});
+  document.querySelectorAll(".nav a").forEach(function(a){a.addEventListener("click",function(){document.body.classList.remove("menu-open");burger.setAttribute("aria-expanded","false");});});
+
+  /* ---------- hero slideshow ---------- */
+  var slides=[].slice.call(document.querySelectorAll("#slides .ph")), dots=document.getElementById("dots"), cur=0, timer;
+  slides.forEach(function(_,i){var b=document.createElement("button");b.type="button";b.setAttribute("aria-label","Slide "+(i+1));b.addEventListener("click",function(){go(i);});dots.appendChild(b);});
+  function go(i){slides[cur].classList.remove("on");dots.children[cur].classList.remove("on");cur=(i+slides.length)%slides.length;slides[cur].classList.add("on");dots.children[cur].classList.add("on");clearTimeout(timer);timer=setTimeout(function(){go(cur+1);},6500);}
+  go(0);
+
+  /* ---------- scroll reveal ---------- */
+  var rv=[].slice.call(document.querySelectorAll(".rv"));
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{rootMargin:"0px 0px -8% 0px"});
+    rv.forEach(function(el){ var r=el.getBoundingClientRect(); if(r.top<innerHeight) el.classList.add("in"); else io.observe(el);});
+  } else rv.forEach(function(el){el.classList.add("in");});
+
+  /* ---------- 120 counter ---------- */
+  var n=document.getElementById("n120"), g=document.getElementById("gauge"), done=false;
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function count(){
+    if(done||reduce) return; done=true; var t0=null, unit=n.querySelector("small");
+    function step(t){ if(!t0) t0=t; var p=Math.min(1,(t-t0)/1800), e=1-Math.pow(1-p,3);
+      n.firstChild.nodeValue=String(Math.round(120*e)); g.style.setProperty("--g",e); if(p<1) requestAnimationFrame(step);}
+    n.firstChild.nodeValue="0"; g.style.setProperty("--g",0); requestAnimationFrame(step);
+    void unit;
+  }
+  if("IntersectionObserver" in window){
+    var io2=new IntersectionObserver(function(es){if(es[0].isIntersecting && es[0].boundingClientRect.top>0){count();io2.disconnect();}},{threshold:.5});
+    io2.observe(n);
+  }
+
+  /* ---------- parallax on the 120 band ---------- */
+  var par=document.querySelector("[data-parallax]");
+  if(par && !reduce){
+    window.addEventListener("scroll",function(){var r=par.parentElement.getBoundingClientRect(); if(r.bottom<0||r.top>innerHeight) return; par.style.transform="translateY("+(r.top*-0.12)+"px)";},{passive:true});
+  }
+
+  /* ---------- gallery ---------- */
+  var A={
+    ranch:["58b93f2e-4297-4e06-9a9c-0a9474027c4f/IMG_7990.jpg","351c5976-e108-4901-a862-f60bb6a7fcb0/IMG_8006.jpg","a3d9404c-696d-4286-9ce1-f621116338f0/IMG_7991.jpg","178b193c-30bd-464a-a8e1-47ed996a7454/IMG_3549.jpg","94fdc7d8-7b64-4eb9-bcc0-55b5dd9b6cb2/IMG_8019.jpg","89d5aa21-c616-4ce7-8303-c64e55d60abe/IMG_7985.jpg","d1d49148-5491-4fbc-8097-01e1966e9c99/IMG_8002.jpg","b9a095c9-a8c3-41af-a1df-32267d01ce38/IMG_8021.jpg","1ae81bda-461d-459e-ac48-fad1ae4ed1ee/IMG_9640.jpeg","a01a7979-6abc-4829-ac67-f972442a91d1/IMG_9655.jpeg","fcb14fd3-bfe8-46a3-88cb-1d55964907e7/IMG_9632.jpeg","216827f2-e11d-4792-af13-e8bfbb54fd50/IMG_9626.jpeg"],
+    opening:["9a108bd4-7863-4b68-acd8-c00b03451394/IMG_3726.jpg","8d197af8-899e-411c-bae8-a51a10dae2b6/IMG_3705.jpg","1676574922566-SMHF0FWDW9BTF6Y2IU8A/IMG_3712.jpg","1676574388101-4UNGC5GYREF5OZKLZ9XT/IMG_3718.jpg","1676574585125-ULIAYNL4Q770WFQ5WZQR/IMG_3722.jpg","1676574735778-07VACL6OH0QPLKXVYRUB/IMG_3725.jpg","5f1e0425-821e-4f3e-a20d-927a346a7630/IMG_3706.jpg","2ffa6172-1c5a-4756-9a36-03c0072a44ae/IMG_3710.jpg"],
+    palermo:["b3c03503-e4be-46a3-988f-934ccbcd9318/IMG_3500.jpg","0482dd70-c183-4fe2-8db8-04c34e3630ec/IMG_3501.jpg","f6f3d2a9-3978-4503-88a9-607c55ec8084/IMG_3505.jpg","c1f27e54-151d-4ed1-85cc-54cb27ff978a/IMG_3508.jpg","b6a6fc5b-c4b8-4832-93c8-ea614088d547/IMG_3511.jpg","7e71243e-ffd3-48fb-96fe-ffa9f7c05fdb/IMG_3513.jpg","1f852f0d-4a8d-4bda-967e-ce5391a8451c/IMG_3512.jpg","d4239293-51d5-4d21-b68f-663eb9730c4d/IMG_3514.jpg"],
+    mc:["468b25cf-a97c-4c19-a76f-3ceb858ef513/IMG_3785.jpg","e38cd284-f7f1-45e5-8ee3-a9e67f9feaa8/IMG_3796.jpg","cdddd947-9af9-4c17-b2ce-4021ac4dd52e/IMG_3801.jpg","6b7f2f49-234d-4079-b591-0588825ff998/IMG_3797.jpg","8fb75f1e-5768-423b-b170-b4bc7feae383/IMG_3786.jpg","3d7da91f-6fae-404b-8c3b-e0281bd114e2/IMG_3795.jpg","88c48e97-d82e-4e7b-84f2-ab1c02502c87/IMG_3804+2.jpg","3c5bd9fe-3dc4-4025-bc32-7d47c9db4ee3/IMG_3794.jpg"]
+  };
+  var shapes=["tall","wide","sq","wide","tall","sq"], tones=["sky","field","leather","lagoon"];
+  var galEl=document.getElementById("gal"), album="ranch";
+  function renderGal(name){
+    album=name; galEl.innerHTML="";
+    A[name].forEach(function(src,i){
+      var b=document.createElement("button"); b.type="button"; b.style.animationDelay=(i*60)+"ms";
+      b.innerHTML='<div class="ph '+shapes[i%shapes.length]+' '+tones[(i+name.length)%tones.length]+'"><img alt="" data-src="'+src+'" data-w="750"></div>';
+      b.addEventListener("click",function(){openLb(i);});
+      galEl.appendChild(b); load(b.querySelector("img"));
+    });
+    document.querySelectorAll(".gal-tabs button").forEach(function(t){t.setAttribute("aria-pressed",t.dataset.album===name?"true":"false");});
+  }
+  document.querySelectorAll(".gal-tabs button").forEach(function(t){t.addEventListener("click",function(){renderGal(t.dataset.album);});});
+  renderGal("ranch");
+
+  var lb=document.getElementById("lb"), lbImg=document.getElementById("lb-img"), li=0;
+  function openLb(i){li=(i+A[album].length)%A[album].length; lbImg.style.display=""; lbImg.setAttribute("data-src",A[album][li]); lbImg.setAttribute("data-w","2000"); load(lbImg); lbImg.loading="eager"; lb.hidden=false;}
+  document.getElementById("lb-x").onclick=function(){lb.hidden=true;};
+  document.getElementById("lb-p").onclick=function(){openLb(li-1);};
+  document.getElementById("lb-n").onclick=function(){openLb(li+1);};
+  lb.addEventListener("click",function(e){if(e.target===lb) lb.hidden=true;});
+  document.addEventListener("keydown",function(e){if(lb.hidden) return; if(e.key==="Escape") lb.hidden=true; if(e.key==="ArrowLeft") openLb(li-1); if(e.key==="ArrowRight") openLb(li+1);});
+
+  /* ---------- experience cards preselect the form ---------- */
+  document.querySelectorAll(".card[data-interest]").forEach(function(c){c.addEventListener("click",function(){document.getElementById("f-int").value=c.dataset.interest;});});
+
+  /* ---------- form -> WhatsApp ---------- */
+  document.getElementById("form").addEventListener("submit",function(e){
+    e.preventDefault(); var f=e.target, d=T[lang], sel=f.interest;
+    var txt=d["wa.form"].replace("{name}",f.name.value||"-").replace("{guests}",f.guests.value||"-").replace("{dates}",f.dates.value||"-").replace("{int}",sel.options[sel.selectedIndex].text).replace("{msg}",f.msg.value||"");
+    var a=document.createElement("a"); a.href="https://wa.me/"+WA+"?text="+encodeURIComponent(txt.trim()); a.target="_blank"; a.rel="noopener"; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  document.getElementById("yr").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
