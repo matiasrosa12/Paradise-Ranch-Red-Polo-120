@@ -279,9 +279,11 @@ footer small{display:block;font-family:var(--f-label);letter-spacing:.18em;font-
 }
 @media (max-width:920px){
   .burger{display:block}
-  .nav{position:fixed;inset:0;z-index:-1;background:var(--brown-deep);flex-direction:column;justify-content:center;align-items:center;gap:22px;transform:translateY(-100%);transition:transform .55s var(--ease)}
+  .top.solid{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(58,49,44,.97)}
+  .nav{position:fixed;top:0;left:0;right:0;height:100vh;height:100dvh;z-index:-1;background:var(--brown-deep);flex-direction:column;justify-content:center;align-items:center;gap:22px;transform:translateY(-100%);visibility:hidden;transition:transform .55s var(--ease),visibility 0s .55s}
   .nav a{font-size:24px;letter-spacing:.14em}
-  .menu-open .nav{transform:none}
+  .menu-open .nav{transform:none;visibility:visible;transition:transform .55s var(--ease),visibility 0s}
+  .menu-open{overflow:hidden}
   .tools{margin-left:auto}
   .split{grid-template-columns:1fr;min-height:0}
   .split.rev .split-txt{order:0}
